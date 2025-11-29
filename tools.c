@@ -6,7 +6,7 @@
 /*   By: akaarich <akaarich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 20:39:48 by akaarich          #+#    #+#             */
-/*   Updated: 2025/11/29 20:33:14 by akaarich         ###   ########.fr       */
+/*   Updated: 2025/11/29 22:52:24 by akaarich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,25 @@ int	ft_putnbr(int n)
 	return i;
 }
 
+int	ft_u_putnbr(unsigned int n)
+{
+	int i;
+	i = 0;
+
+	if (n > 9)
+	{
+		i += ft_putnbr(n / 10);
+		i += ft_putnbr(n % 10);
+		
+	}
+	else
+	{
+		ft_putchar(n + '0');
+		i++;
+	}
+	return i;
+}
+
 int	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -77,9 +96,18 @@ int put_hex(unsigned int n, char format)
     count += ft_putchar(hex[n % 16]);
     return (count);
 }
+int ft_p(unsigned int d)
+{
+	int i = 0;
+	i += ft_putstr("0x");
+	i += put_hex(d,'x');
+
+	return i;
+	
+}
+
 int main()
 {
-	put_hex(555,'X');
-	char *s;
-	printf("\n%u",s);
+	printf("%p\n");
+	ft_p(0);
 }
