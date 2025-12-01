@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int put_hex(unsigned long n, char format)
+int	put_hex (unsigned long n, char format)
 {
     char    *hex;
     int     count;
@@ -16,7 +16,7 @@ int put_hex(unsigned long n, char format)
     return (count);
 }
 
-int ft_p(unsigned long d)
+int	ft_p (unsigned long d)
 {
     int i;
     
