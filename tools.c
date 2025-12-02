@@ -26,7 +26,6 @@ int	ft_putstr(char *s)
 int	ft_putnbr(int n)
 {
 	int	len;
-	int	tmp;
 
 	len = 0;
 	if (n == -2147483648)
@@ -39,12 +38,7 @@ int	ft_putnbr(int n)
 		n = -n;
 	}
 	if (n > 9)
-	{
-		tmp = ft_putnbr(n / 10);
-		if (tmp == -1)
-			return (-1);
-		len += tmp;
-	}
+		len += ft_putnbr(n / 10);
 	if (ft_putchar((n % 10) + '0') == -1)
 		return (-1);
 	len++;
@@ -54,16 +48,10 @@ int	ft_putnbr(int n)
 int	ft_u_putnbr(unsigned int n)
 {
 	int	len;
-	int	tmp;
 
 	len = 0;
 	if (n > 9)
-	{
-		tmp = ft_u_putnbr(n / 10);
-		if (tmp == -1)
-			return (-1);
-		len += tmp;
-	}
+		len += ft_u_putnbr(n / 10);
 	if (ft_putchar((n % 10) + '0') == -1)
 		return (-1);
 	len++;

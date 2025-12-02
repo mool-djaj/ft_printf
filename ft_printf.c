@@ -6,7 +6,7 @@
 /*   By: akaarich <akaarich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 17:08:58 by akaarich          #+#    #+#             */
-/*   Updated: 2025/11/29 20:13:34 by akaarich         ###   ########.fr       */
+/*   Updated: 2025/12/02 22:08:40 by akaarich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int ft_printf(const char *str, ...)
     int     i;
     va_list args;
     int     length;
-
-    i = 0;
+	int tmp;
+	
+	i = 0;
     length = 0;
     va_start(args, str);
     while (str[i])
@@ -49,11 +50,19 @@ int ft_printf(const char *str, ...)
         {
 			if (str[i + 1] == '\0')
 				break;
-            length += ft_format(args, str[i + 1]);
+            tmp = ft_format(args, str[i + 1]);
+			if (tmp < 0)
+				return (-1);
+			length += tmp;
 			i++;
         }
         else
-            length += ft_putchar(str[i]);
+		{
+            tmp= ft_putchar(str[i]);
+			if (tmp == -1)
+				return (-1);
+			length += tmp;
+		}
 		i++;
     }
     va_end(args);

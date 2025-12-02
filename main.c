@@ -4,11 +4,14 @@
 #include <fcntl.h>
 int main()
 {
-		int i = ft_u_putnbr(-2);
+		char *a;
+
+		int i = ft_printf("%d", 10);
 		printf("\n%d\n",i);
 
-		int j = printf("%u",-2);
+		int j = printf("%d", 10);
 		printf("\n%d",j);
+
     return (0);
 
 }
